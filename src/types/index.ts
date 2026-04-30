@@ -19,6 +19,12 @@ export interface SkillCategory {
   skills: string[];
 }
 
+export interface TimelineLink {
+  url: string;
+  label: string;
+  icon: "linkedin" | "github" | "twitter" | "document" | "external";
+}
+
 export interface TimelineItem {
   id: string;
   type: "education" | "achievement" | "experience" | "research";
@@ -31,4 +37,7 @@ export interface TimelineItem {
   linkIcon?: "linkedin" | "github" | "document" | "external";
   hoverLabel?: string;
   githubUrl?: string;
+  links?: TimelineLink[];
+  images?: string[];
+  imageLayout?: "banner" | "scattered" | "stacked";
 }

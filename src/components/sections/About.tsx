@@ -44,13 +44,21 @@ function DocumentIcon({ size = 14 }: { size?: number }) {
   );
 }
 
+function TwitterIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
 /* ── Link Icon Resolver ────────────────────────────── */
 
 function CardIcon({
   type,
   size = 14,
 }: {
-  type: TimelineItem["linkIcon"];
+  type: string;
   size?: number;
 }) {
   switch (type) {
@@ -58,6 +66,8 @@ function CardIcon({
       return <LinkedinIcon size={size} />;
     case "github":
       return <GithubIcon size={size} />;
+    case "twitter":
+      return <TwitterIcon size={size} />;
     case "document":
       return <DocumentIcon size={size} />;
     default:
@@ -131,10 +141,64 @@ function TimelineEntry({
     research: "text-purple-400",
   };
 
-  const isClickable = item.link && item.link !== "#";
+  const renderImages = () => {
+    if (!item.images || item.images.length === 0) return null;
+
+    if (item.imageLayout === "banner") {
+      return (
+        <div className="mt-4 mb-4 w-full h-32 md:h-40 border-2 border-dashed border-accent/40 flex items-center justify-center bg-background/50 rounded-md relative overflow-hidden group-hover:border-accent transition-colors duration-300">
+          <span className="font-mono text-sm text-accent/60 tracking-widest absolute z-0">[ IMAGE ]</span>
+          {item.images[0] && (
+            <img src={item.images[0]} alt="Banner" className="w-full h-full object-cover relative z-10" onError={(e) => e.currentTarget.style.display = 'none'} />
+          )}
+        </div>
+      );
+    }
+
+    if (item.imageLayout === "scattered") {
+      return (
+        <div className="mt-6 mb-8 relative h-40 md:h-48 flex items-center justify-center">
+          {item.images.map((img, i) => {
+            const randomRotate = (i % 2 === 0 ? 1 : -1) * (4 + (i * 3));
+            const randomTranslateX = (i % 2 === 0 ? -1 : 1) * (i * 10);
+            return (
+              <div
+                key={i}
+                style={{ 
+                  transform: `translate(${randomTranslateX}px, 0) rotate(${randomRotate}deg)`, 
+                  zIndex: i 
+                }}
+                className="absolute w-28 h-28 md:w-36 md:h-36 border border-border bg-background flex items-center justify-center shadow-2xl transition-all duration-300 hover:!translate-x-0 hover:!translate-y-0 hover:!rotate-0 hover:scale-110 hover:!z-50"
+              >
+                <div className="w-[90%] h-[90%] border border-dashed border-accent/30 flex items-center justify-center bg-surface relative overflow-hidden">
+                  <span className="font-mono text-[10px] text-accent/50 tracking-wider absolute z-0">[ IMAGE ]</span>
+                  <img src={img} alt="Gallery" className="w-full h-full object-cover relative z-10" onError={(e) => e.currentTarget.style.display = 'none'} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    if (item.imageLayout === "stacked") {
+      return (
+        <div className="mt-4 mb-4 flex gap-4 overflow-x-auto pb-2">
+          {item.images.map((img, i) => (
+            <div key={i} className="flex-shrink-0 w-36 h-48 border-2 border-dashed border-accent/40 flex items-center justify-center bg-background/50 rounded-sm hover:border-accent hover:bg-accent/5 transition-all duration-300 relative overflow-hidden">
+              <span className="font-mono text-xs text-accent/60 tracking-widest text-center px-2 absolute z-0">[ IMAGE ]</span>
+              <img src={img} alt="Document" className="w-full h-full object-cover relative z-10" onError={(e) => e.currentTarget.style.display = 'none'} />
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   const cardContent = (
-    <div className="timeline-card bg-surface border border-border p-5 hover:border-accent/30 transition-all duration-300 group relative">
+    <div className="timeline-card bg-surface border border-border p-5 md:p-6 hover:border-accent/30 transition-all duration-300 group relative flex flex-col h-full">
       {/* Type Label */}
       <span
         className={`font-mono text-[10px] tracking-widest uppercase ${typeColors[item.type]} opacity-70`}
@@ -143,71 +207,82 @@ function TimelineEntry({
       </span>
 
       {/* Title */}
-      <h3 className="font-heading text-lg font-bold text-foreground mt-2 mb-1 group-hover:text-accent transition-colors duration-300">
+      <h3 className="font-heading text-lg md:text-xl font-bold text-foreground mt-2 mb-1 group-hover:text-accent transition-colors duration-300">
         {item.title}
       </h3>
 
-      {/* Subtitle with optional LinkedIn icon for education */}
+      {/* Subtitle */}
       <div className="flex items-center gap-2 mb-1">
         <p className="font-mono text-xs text-accent-cyan/80">
           {item.subtitle}
         </p>
-        {item.type === "education" && (
-          <button
-            type="button"
-            className="inline-flex items-center justify-center w-5 h-5 text-accent-cyan/50 hover:text-[#0A66C2] transition-colors duration-200"
-            aria-label="LinkedIn Profile"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              window.open("https://www.linkedin.com/in/khushneet-singh/", "_blank", "noopener,noreferrer");
-            }}
-          >
-            <LinkedinIcon size={12} />
-          </button>
-        )}
       </div>
 
       {/* Date */}
-      <p className="font-mono text-[11px] text-muted mb-3">{item.date}</p>
+      <p className="font-mono text-[11px] text-muted mb-4">{item.date}</p>
 
       {/* Description */}
-      <p className="text-sm text-muted-light leading-relaxed">
+      <p className="text-sm text-muted-light leading-relaxed mb-2">
         {item.description}
       </p>
 
-      {/* Bottom Row: Icons + Hover Label */}
-      <div className="flex items-center justify-between mt-4">
-        {/* Icon badges */}
-        <div className="flex items-center gap-2">
-          {item.linkIcon && (
-            <span className="inline-flex items-center justify-center w-7 h-7 border border-border text-muted-light group-hover:border-accent/40 group-hover:text-accent transition-all duration-200">
-              <CardIcon type={item.linkIcon} size={14} />
+      {/* Image Gallery */}
+      {renderImages()}
+
+      {/* Spacer */}
+      <div className="flex-grow min-h-[16px]" />
+
+      {/* Bottom Row: Pill Buttons */}
+      {(item.links && item.links.length > 0) ? (
+        <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-border/50">
+          {item.links.map((link, i) => (
+            <a
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full border border-accent/20 bg-accent/5 text-accent hover:bg-accent/10 hover:border-accent/60 hover:shadow-[0_0_15px_rgba(0,255,159,0.2)] transition-all duration-300 group/btn"
+            >
+              <span className="group-hover/btn:scale-110 transition-transform duration-300">
+                <CardIcon type={link.icon} size={18} />
+              </span>
+              <span className="font-mono text-xs font-semibold tracking-wide">
+                {link.label}
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        /* Legacy fallback */
+        <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center gap-2">
+            {item.linkIcon && (
+              <span className="inline-flex items-center justify-center w-7 h-7 border border-border text-muted-light group-hover:border-accent/40 group-hover:text-accent transition-all duration-200">
+                <CardIcon type={item.linkIcon as any} size={14} />
+              </span>
+            )}
+            {item.githubUrl && (
+              <button
+                type="button"
+                className="inline-flex items-center justify-center w-7 h-7 border border-border text-muted-light hover:border-accent hover:text-accent transition-all duration-200"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(item.githubUrl, "_blank", "noopener,noreferrer");
+                }}
+              >
+                <GithubIcon size={14} />
+              </button>
+            )}
+          </div>
+          {item.hoverLabel && (
+            <span className="font-mono text-[10px] text-muted opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 tracking-wider">
+              {item.hoverLabel}
             </span>
           )}
-          {item.githubUrl && (
-            <button
-              type="button"
-              className="inline-flex items-center justify-center w-7 h-7 border border-border text-muted-light hover:border-accent hover:text-accent transition-all duration-200"
-              aria-label={`GitHub repository for ${item.title}`}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.open(item.githubUrl, "_blank", "noopener,noreferrer");
-              }}
-            >
-              <GithubIcon size={14} />
-            </button>
-          )}
         </div>
-
-        {/* Hover label */}
-        {item.hoverLabel && (
-          <span className="font-mono text-[10px] text-muted opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 tracking-wider">
-            {item.hoverLabel}
-          </span>
-        )}
-      </div>
+      )}
     </div>
   );
 
@@ -226,19 +301,7 @@ function TimelineEntry({
           isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
         }`}
       >
-        {isClickable ? (
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block no-underline"
-            aria-label={`${item.title} — ${item.hoverLabel || "View"}`}
-          >
-            {cardContent}
-          </a>
-        ) : (
-          cardContent
-        )}
+        {cardContent}
       </motion.div>
     </div>
   );
