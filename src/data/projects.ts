@@ -86,7 +86,7 @@ export const projects: Project[] = [
     longDescription:
       "A high-performance developer portfolio with a dark hacker-terminal aesthetic. Built on Next.js 16 with Turbopack, featuring scroll-driven Framer Motion animations, a dynamic photo cluster with corner-bracket hover effects, GitHub contribution heatmap integration, interactive resume preview with PDF embed, skill matrix with branded SVG icons, and a responsive timeline. Designed for maximum visual impact and engagement.",
     tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
-    githubUrl: "https://github.com/ksploitx/ksploitx",
+    githubUrl: "https://github.com/ksploitx/portfolio-ksploitx",
     liveUrl: "https://ksploitx.pages.dev",
     coverImage: "/images/cover-portfolio.png",
     featured: true,
