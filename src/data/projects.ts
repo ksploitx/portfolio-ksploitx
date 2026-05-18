@@ -11,7 +11,7 @@ export const projects: Project[] = [
     longDescription:
       "AutoLingo is a developer-first CLI tool built in Dart that streamlines the tedious process of managing multilingual support in Flutter applications. Powered by Lingo.dev, it auto-generates ARB files, handles translation key extraction, and provides a seamless workflow for maintaining translations across multiple locales. Published and maintained on pub.dev.",
     tech: ["Dart", "Flutter", "CLI", "pub.dev"],
-    githubUrl: "https://github.com/KhushneetSingh/autolingo",
+    githubUrl: "https://github.com/ksploitx/autolingo",
     liveUrl: "https://pub.dev/packages/autolingo",
     coverImage: "/images/cover-autolingo.png",
     featured: true,
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     longDescription:
       "Pi Sentinel transforms a Raspberry Pi into a portable network security auditing station. It performs automated vulnerability scanning, cross-references findings with live CVE databases, and streams results in real-time via WebSockets. The Flask-based dashboard provides an intuitive interface for monitoring network health and identifying attack vectors.",
     tech: ["Python", "Flask", "Aircrack-ng", "WebSockets", "Raspberry Pi"],
-    githubUrl: "https://github.com/KhushneetSingh/PiSentinel",
+    githubUrl: "https://github.com/ksploitx/PiSentinel",
     coverImage: "/images/cover-pisentinel.png",
     featured: true,
     status: "DEPLOYED",
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     longDescription:
       "Data Sanity is an end-to-end data preparation pipeline designed for AI/ML workflows. It leverages LangChain for intelligent data cleaning, FastAPI for the serving layer, pgvector for efficient vector storage, and Exa's semantic search API for contextual data enrichment. The pipeline ensures datasets are RAG-ready with minimal manual intervention.",
     tech: ["Python", "LangChain", "FastAPI", "pgvector", "Exa"],
-    githubUrl: "https://github.com/KhushneetSingh/DataSanity",
+    githubUrl: "https://github.com/ksploitx/DataSanity",
     coverImage: "/images/cover-datasanity.png",
     featured: true,
     status: "WIP",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     longDescription:
       "VitalVault is a comprehensive health management platform built with Flutter and Firebase. Features include AI-driven medical report analysis, one-touch report digitization, medicine tracking, wearable data sync, SOS alerts, and nearby hospital discovery. All health data is protected with a cryptographic vault layer for maximum security.",
     tech: ["Flutter", "Firebase", "pgvector", "Exa", "LangChain"],
-    githubUrl: "https://github.com/KhushneetSingh/Vital-Vault",
+    githubUrl: "https://github.com/ksploitx/Vital-Vault",
     featured: true,
     status: "ARCHIVED",
   },
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     longDescription:
       "A high-performance developer portfolio with a dark hacker-terminal aesthetic. Built on Next.js 16 with Turbopack, featuring scroll-driven Framer Motion animations, a dynamic photo cluster with corner-bracket hover effects, GitHub contribution heatmap integration, interactive resume preview with PDF embed, skill matrix with branded SVG icons, and a responsive timeline. Designed for maximum visual impact and engagement.",
     tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
-    githubUrl: "https://github.com/KhushneetSingh/ksploitx",
+    githubUrl: "https://github.com/ksploitx/ksploitx",
     liveUrl: "https://ksploitx.pages.dev",
     coverImage: "/images/cover-portfolio.png",
     featured: true,

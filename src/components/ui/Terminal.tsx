@@ -85,7 +85,7 @@ function processCommand(input: string): string[] {
       "  ── COMMUNICATION CHANNELS ──",
       "",
       "  ✉  Email:    khushneetsingh@proton.me",
-      "  ◉  GitHub:   github.com/KhushneetSingh",
+      "  ◉  GitHub:   github.com/ksploitx",
       "  ◈  LinkedIn: linkedin.com/in/khushneet-singh",
       "",
     ];

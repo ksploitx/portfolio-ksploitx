@@ -66,7 +66,7 @@ export default function Projects() {
           className="flex justify-center mt-16"
         >
           <a
-            href="https://github.com/KhushneetSingh"
+            href="https://github.com/ksploitx"
             target="_blank"
             rel="noopener noreferrer"
             className="github-profile-btn group"
@@ -75,7 +75,7 @@ export default function Projects() {
             <span className="github-profile-btn-glow" />
             <GithubIcon size={28} />
             <span className="font-mono text-sm tracking-wider">
-              @KhushneetSingh
+              @ksploitx
             </span>
             <svg
               width="16"

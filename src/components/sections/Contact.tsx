@@ -104,7 +104,7 @@ export default function Contact() {
                 className="flex items-center justify-center lg:justify-start gap-4"
               >
                 <a
-                  href="https://github.com/KhushneetSingh"
+                  href="https://github.com/ksploitx"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon-btn"
@@ -214,7 +214,7 @@ export default function Contact() {
                     <span>PREVIEW</span>
                   </button>
                   <a
-                    href={getImagePath("/docs/Khushneet_Singh.pdf")}
+                    href={getImagePath("/docs/Khushneet Singh.pdf")}
                     download="Khushneet_Singh_Resume.pdf"
                     className="resume-action-btn resume-action-btn-primary flex-1"
                   >
@@ -278,7 +278,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href={getImagePath("/docs/Khushneet_Singh.pdf")}
+                    href={getImagePath("/docs/Khushneet Singh.pdf")}
                     download="Khushneet_Singh_Resume.pdf"
                     className="resume-modal-download-btn"
                   >
@@ -298,7 +298,7 @@ export default function Contact() {
               {/* PDF Embed */}
               <div className="resume-modal-body">
                 <iframe
-                  src={getImagePath("/docs/Khushneet_Singh.pdf")}
+                  src={getImagePath("/docs/Khushneet Singh.pdf")}
                   title="Khushneet Singh Resume"
                   className="w-full h-full border-0"
                 />

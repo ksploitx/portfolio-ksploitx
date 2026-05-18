@@ -220,7 +220,7 @@ export default function Hero() {
                 </div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://ghchart.rshah.org/00ff88/KhushneetSingh"
+                  src="https://ghchart.rshah.org/00ff88/ksploitx"
                   alt="GitHub Contribution Heatmap"
                   className="github-heatmap"
                 />

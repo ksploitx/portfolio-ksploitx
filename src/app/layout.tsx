@@ -21,10 +21,16 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export const metadata: Metadata = {
   title: "KSPLOITX | Full-Stack · AI · Security",
   description:
     "Personal portfolio of Khushneet Singh (KSPLOITX) — Full-stack developer and AI engineer building intelligent systems at the intersection of security, machine learning, and scalable architecture.",
+  icons: {
+    icon: `${basePath}/favicon.png`,
+    apple: `${basePath}/apple-icon.png`,
+  },
   openGraph: {
     title: "Khushneet Singh — KSPLOITX",
     description:
