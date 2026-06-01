@@ -33,19 +33,19 @@ export const projects: Project[] = [
     status: "DEVELOPED",
   },
   {
-    id: "pi-sentinel",
-    slug: "pi-sentinel",
-    codename: "PI_SENTINEL",
-    title: "Pi Sentinel",
+    id: "weave",
+    slug: "weave",
+    codename: "WEAVE",
+    title: "Weave",
     description:
-      "Raspberry Pi-based network vulnerability scanner with live CVE matching. Real-time threat detection powered by WebSockets and Aircrack-ng integration.",
+      "High-performance, multi-agent LLM orchestration system designed for reliability and observability. Robust framework for managing complex agentic workflows with strict token budget enforcement, detailed tool/agent execution logging, and automated evaluation tracking.",
     longDescription:
-      "Pi Sentinel transforms a Raspberry Pi into a portable network security auditing station. It performs automated vulnerability scanning, cross-references findings with live CVE databases, and streams results in real-time via WebSockets. The Flask-based dashboard provides an intuitive interface for monitoring network health and identifying attack vectors.",
-    tech: ["Python", "Flask", "Aircrack-ng", "WebSockets", "Raspberry Pi"],
-    githubUrl: "https://github.com/ksploitx/PiSentinel",
-    coverImage: "/images/cover-pisentinel.png",
+      "Weave is a high-performance, multi-agent LLM orchestration system designed for reliability and observability. It provides a robust framework for managing complex agentic workflows with strict token budget enforcement, detailed tool/agent execution logging, and automated evaluation tracking. Built with FastAPI, LangGraph, and Celery for scalable agent orchestration.",
+    tech: ["Python", "FastAPI", "LangGraph", "Celery", "Redis", "PostgreSQL"],
+    githubUrl: "https://github.com/weave",
+    coverImage: "/images/cover-weave.png",
     featured: true,
-    status: "DEPLOYED",
+    status: "DEVELOPED",
   },
   {
     id: "data-sanity",
@@ -63,18 +63,19 @@ export const projects: Project[] = [
     status: "WIP",
   },
   {
-    id: "vital-vault",
-    slug: "vital-vault",
-    codename: "VITAL_VAULT",
-    title: "Vital Vault",
+    id: "pi-sentinel",
+    slug: "pi-sentinel",
+    codename: "PI_SENTINEL",
+    title: "Pi Sentinel",
     description:
-      "AI-powered health companion app that securely manages health records, analyzes reports using Qwen AI, tracks medicines, syncs wearable data, and offers chat-based health insights with cryptographic vault security.",
+      "Raspberry Pi-based network vulnerability scanner with live CVE matching. Real-time threat detection powered by WebSockets and Aircrack-ng integration.",
     longDescription:
-      "VitalVault is a comprehensive health management platform built with Flutter and Firebase. Features include AI-driven medical report analysis, one-touch report digitization, medicine tracking, wearable data sync, SOS alerts, and nearby hospital discovery. All health data is protected with a cryptographic vault layer for maximum security.",
-    tech: ["Flutter", "Firebase", "pgvector", "Exa", "LangChain"],
-    githubUrl: "https://github.com/ksploitx/Vital-Vault",
+      "Pi Sentinel transforms a Raspberry Pi into a portable network security auditing station. It performs automated vulnerability scanning, cross-references findings with live CVE databases, and streams results in real-time via WebSockets. The Flask-based dashboard provides an intuitive interface for monitoring network health and identifying attack vectors.",
+    tech: ["Python", "Flask", "Aircrack-ng", "WebSockets", "Raspberry Pi"],
+    githubUrl: "https://github.com/ksploitx/PiSentinel",
+    coverImage: "/images/cover-pisentinel.png",
     featured: true,
-    status: "ARCHIVED",
+    status: "DEPLOYED",
   },
   {
     id: "ksploitx-portfolio",
@@ -91,5 +92,19 @@ export const projects: Project[] = [
     coverImage: "/images/cover-portfolio.png",
     featured: true,
     status: "DEPLOYED",
+  },
+  {
+    id: "vital-vault",
+    slug: "vital-vault",
+    codename: "VITAL_VAULT",
+    title: "Vital Vault",
+    description:
+      "AI-powered health companion app that securely manages health records, analyzes reports using Qwen AI, tracks medicines, syncs wearable data, and offers chat-based health insights with cryptographic vault security.",
+    longDescription:
+      "VitalVault is a comprehensive health management platform built with Flutter and Firebase. Features include AI-driven medical report analysis, one-touch report digitization, medicine tracking, wearable data sync, SOS alerts, and nearby hospital discovery. All health data is protected with a cryptographic vault layer for maximum security.",
+    tech: ["Flutter", "Firebase", "pgvector", "Exa", "LangChain"],
+    githubUrl: "https://github.com/ksploitx/Vital-Vault",
+    featured: true,
+    status: "ARCHIVED",
   },
 ];
