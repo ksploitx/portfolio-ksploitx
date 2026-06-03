@@ -22,39 +22,50 @@ const BOOT_LINES = [
   'Welcome, operator. Type \'help\' to begin.',
 ];
 
+/* ── Box-drawing helpers (guarantees alignment) ────── */
+const HELP_W = 43; // inner width for single-line box
+const INFO_W = 38; // inner width for double-line box
+
+function sRow(text: string) {
+  return "\u2502" + ("  " + text).padEnd(HELP_W) + "\u2502";
+}
+function dRow(text: string, prefix = "  ") {
+  return prefix + "\u2551" + ("  " + text).padEnd(INFO_W) + "\u2551";
+}
+
 function processCommand(input: string): string[] {
   const cmd = input.trim().toLowerCase();
 
   if (cmd === "help") {
     return [
-      "┌─────────────────────────────────────────┐",
-      "│  AVAILABLE COMMANDS                      │",
-      "├─────────────────────────────────────────┤",
-      "│  help       → Show this help menu        │",
-      "│  whoami     → Operator identity           │",
-      "│  projects   → List deployed systems       │",
-      "│  skills     → Display skill matrix        │",
-      "│  contact    → Communication channels      │",
-      "│  status     → Current system status        │",
-      "│  clear      → Clear terminal output        │",
-      "│  exit/quit  → Close terminal               │",
-      "└─────────────────────────────────────────┘",
+      "\u250c" + "\u2500".repeat(HELP_W) + "\u2510",
+      sRow("AVAILABLE COMMANDS"),
+      "\u251c" + "\u2500".repeat(HELP_W) + "\u2524",
+      sRow("help       - Show this help menu"),
+      sRow("whoami     - Operator identity"),
+      sRow("projects   - List deployed systems"),
+      sRow("skills     - Display skill matrix"),
+      sRow("contact    - Communication channels"),
+      sRow("status     - Current system status"),
+      sRow("clear      - Clear terminal output"),
+      sRow("exit/quit  - Close terminal"),
+      "\u2514" + "\u2500".repeat(HELP_W) + "\u2518",
     ];
   }
 
   if (cmd === "whoami") {
     return [
       "",
-      "  ╔══════════════════════════════════════╗",
-      "  ║  OPERATOR: Khushneet Singh            ║",
-      "  ║  ALIAS:    KSPLOITX                   ║",
-      "  ╠══════════════════════════════════════╣",
-      "  ║  ROLE: Full-Stack Developer           ║",
-      "  ║        AI Engineer · Security         ║",
-      "  ║  FOCUS: Building systems that think   ║",
-      "  ║  STACK: Python · TypeScript · Dart    ║",
-      "  ║  BASE: Bhopal, India                  ║",
-      "  ╚══════════════════════════════════════╝",
+      "  \u2554" + "\u2550".repeat(INFO_W) + "\u2557",
+      dRow("OPERATOR: Khushneet Singh"),
+      dRow("ALIAS:    KSPLOITX"),
+      "  \u2560" + "\u2550".repeat(INFO_W) + "\u2563",
+      dRow("ROLE: Full-Stack Developer"),
+      dRow("      AI Engineer / Security"),
+      dRow("FOCUS: Building systems that think"),
+      dRow("STACK: Python / TypeScript / Dart"),
+      dRow("BASE: Bhopal, India"),
+      "  \u255a" + "\u2550".repeat(INFO_W) + "\u255d",
       "",
     ];
   }
@@ -251,13 +262,13 @@ export default function Terminal({ isOpen, onClose }: TerminalProps) {
             {/* Output */}
             <div
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-4 font-mono text-sm leading-relaxed"
+              className="flex-1 overflow-y-auto overflow-x-auto p-4 font-mono text-sm leading-relaxed"
               onClick={() => inputRef.current?.focus()}
             >
               {lines.map((line, i) => (
                 <div
                   key={i}
-                  className={`whitespace-pre-wrap ${
+                  className={`whitespace-pre ${
                     line.type === "system"
                       ? "text-accent/60"
                       : line.type === "input"
