@@ -42,7 +42,7 @@ export const projects: Project[] = [
     longDescription:
       "Weave is a high-performance, multi-agent LLM orchestration system designed for reliability and observability. It provides a robust framework for managing complex agentic workflows with strict token budget enforcement, detailed tool/agent execution logging, and automated evaluation tracking. Built with FastAPI, LangGraph, and Celery for scalable agent orchestration.",
     tech: ["Python", "FastAPI", "LangGraph", "Celery", "Redis", "PostgreSQL"],
-    githubUrl: "https://github.com/weave",
+    githubUrl: "https://github.com/ksploitx/weave",
     coverImage: "/images/cover-weave.png",
     featured: true,
     status: "DEVELOPED",

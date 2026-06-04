@@ -22,15 +22,14 @@ const BOOT_LINES = [
   'Welcome, operator. Type \'help\' to begin.',
 ];
 
-/* ── Box-drawing helpers (guarantees alignment) ────── */
-const HELP_W = 43; // inner width for single-line box
-const INFO_W = 38; // inner width for double-line box
+/* ── ASCII box helpers (no box-drawing chars — renders perfectly) ── */
+const W = 45; // inner width
 
-function sRow(text: string) {
-  return "\u2502" + ("  " + text).padEnd(HELP_W) + "\u2502";
+function row(text: string) {
+  return "|  " + text.padEnd(W - 3) + "|";
 }
-function dRow(text: string, prefix = "  ") {
-  return prefix + "\u2551" + ("  " + text).padEnd(INFO_W) + "\u2551";
+function border(left: string, fill: string, right: string) {
+  return left + fill.repeat(W) + right;
 }
 
 function processCommand(input: string): string[] {
@@ -38,53 +37,55 @@ function processCommand(input: string): string[] {
 
   if (cmd === "help") {
     return [
-      "\u250c" + "\u2500".repeat(HELP_W) + "\u2510",
-      sRow("AVAILABLE COMMANDS"),
-      "\u251c" + "\u2500".repeat(HELP_W) + "\u2524",
-      sRow("help       - Show this help menu"),
-      sRow("whoami     - Operator identity"),
-      sRow("projects   - List deployed systems"),
-      sRow("skills     - Display skill matrix"),
-      sRow("contact    - Communication channels"),
-      sRow("status     - Current system status"),
-      sRow("clear      - Clear terminal output"),
-      sRow("exit/quit  - Close terminal"),
-      "\u2514" + "\u2500".repeat(HELP_W) + "\u2518",
+      border("+", "-", "+"),
+      row("AVAILABLE COMMANDS"),
+      border("+", "-", "+"),
+      row("help       - Show this help menu"),
+      row("whoami     - Operator identity"),
+      row("projects   - List deployed systems"),
+      row("skills     - Display skill matrix"),
+      row("contact    - Communication channels"),
+      row("status     - Current system status"),
+      row("clear      - Clear terminal output"),
+      row("exit/quit  - Close terminal"),
+      border("+", "-", "+"),
     ];
   }
 
   if (cmd === "whoami") {
     return [
       "",
-      "  \u2554" + "\u2550".repeat(INFO_W) + "\u2557",
-      dRow("OPERATOR: Khushneet Singh"),
-      dRow("ALIAS:    KSPLOITX"),
-      "  \u2560" + "\u2550".repeat(INFO_W) + "\u2563",
-      dRow("ROLE: Full-Stack Developer"),
-      dRow("      AI Engineer / Security"),
-      dRow("FOCUS: Building systems that think"),
-      dRow("STACK: Python / TypeScript / Dart"),
-      dRow("BASE: Bhopal, India"),
-      "  \u255a" + "\u2550".repeat(INFO_W) + "\u255d",
+      "  +==========================================+",
+      "  |  OPERATOR: Khushneet Singh               |",
+      "  |  ALIAS:    KSPLOITX                      |",
+      "  +==========================================+",
+      "  |  ROLE:  Full-Stack Developer             |",
+      "  |         AI Engineer / Security           |",
+      "  |  FOCUS: Intelligent systems at the       |",
+      "  |         intersection of security,        |",
+      "  |         ML, and scalable architecture    |",
+      "  |  STACK: Python / TypeScript / Dart       |",
+      "  |  BASE:  Bhopal, India                    |",
+      "  +==========================================+",
       "",
     ];
   }
 
   if (cmd === "projects") {
-    const lines = ["", "  ── DEPLOYED SYSTEMS ──", ""];
+    const lines = ["", "  -- DEPLOYED SYSTEMS --", ""];
     projects.forEach((p, i) => {
-      lines.push(`  [${i + 1}] ${p.codename} — ${p.description.slice(0, 70)}...`);
-      if (p.githubUrl) lines.push(`      └─ ${p.githubUrl}`);
+      lines.push(`  [${i + 1}] ${p.codename} -- ${p.description.slice(0, 70)}...`);
+      if (p.githubUrl) lines.push(`       > ${p.githubUrl}`);
       lines.push("");
     });
     return lines;
   }
 
   if (cmd === "skills") {
-    const lines = ["", "  ── SKILL MATRIX ──", ""];
+    const lines = ["", "  -- SKILL MATRIX --", ""];
     skills.forEach((cat) => {
       lines.push(`  ${cat.icon} ${cat.category.toUpperCase()}`);
-      lines.push(`    ${cat.skills.join(" · ")}`);
+      lines.push(`    ${cat.skills.join(" / ")}`);
       lines.push("");
     });
     return lines;
@@ -93,11 +94,13 @@ function processCommand(input: string): string[] {
   if (cmd === "contact") {
     return [
       "",
-      "  ── COMMUNICATION CHANNELS ──",
+      "  -- COMMUNICATION CHANNELS --",
       "",
-      "  ✉  Email:    khushneetsingh@proton.me",
-      "  ◉  GitHub:   github.com/ksploitx",
-      "  ◈  LinkedIn: linkedin.com/in/khushneet-singh",
+      "  [email]    singhkhushneet601@gmail.com",
+      "  [github]   github.com/ksploitx",
+      "  [linkedin] linkedin.com/in/khushneet-singh",
+      "  [twitter]  x.com/Singh0Khushneet",
+      "  [discord]  discord.com/users/724934961349656606",
       "",
     ];
   }
@@ -116,12 +119,12 @@ function processCommand(input: string): string[] {
   if (cmd === "sudo hire khushneet") {
     return [
       "",
-      "  ██████████████████████████████████████",
-      "  █                                    █",
-      "  █   ACCESS GRANTED.                  █",
-      "  █   Wise choice, operator.           █",
-      "  █                                    █",
-      "  ██████████████████████████████████████",
+      "  ######################################",
+      "  #                                    #",
+      "  #   ACCESS GRANTED.                  #",
+      "  #   Wise choice, operator.           #",
+      "  #                                    #",
+      "  ######################################",
       "",
     ];
   }
