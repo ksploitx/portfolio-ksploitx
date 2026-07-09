@@ -980,23 +980,23 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  min-height: 340px;
+  min-height: 300px;
   overflow: hidden;
 }
 
 @media (max-width: 767px) {
   .syslog-img-scattered {
-    min-height: 300px;
+    min-height: 250px;
   }
 }
 
 .syslog-polaroid {
   position: absolute;
-  width: 320px;
-  height: 320px;
-  padding: 8px;
+  width: var(--polaroid-size, 200px);
+  height: var(--polaroid-size, 200px);
+  padding: 6px;
   background: #1a1a1a;
-  border: 8px solid #1a1a1a;
+  border: 6px solid #1a1a1a;
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -1013,8 +1013,8 @@ body {
 
 @media (max-width: 767px) {
   .syslog-polaroid {
-    width: 280px;
-    height: 280px;
+    width: var(--polaroid-size-mobile, 160px);
+    height: var(--polaroid-size-mobile, 160px);
   }
 }
 
@@ -1031,9 +1031,10 @@ body {
   margin-top: 24px;
   margin-bottom: 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: 16px;
   width: 100%;
+  align-items: stretch;
 }
 
 @media (max-width: 767px) {
@@ -1048,6 +1049,9 @@ body {
   overflow: hidden;
   background: rgba(13, 13, 13, 0.5);
   transition: transform 0.2s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .syslog-grid-card:hover {
@@ -1058,9 +1062,10 @@ body {
 .syslog-grid-img {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: 200px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(13, 13, 13, 0.5);
+  max-height: 320px;
 }
 
 /* ── Link Buttons (Pill Shape) ────────────────────── */

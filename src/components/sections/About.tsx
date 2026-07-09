@@ -157,18 +157,34 @@ function TimelineEntry({
 
     /* ── Scattered / Polaroid (Achievement & Experience) ── */
     if (item.imageLayout === "scattered") {
+      const count = item.images.length;
+      // Smaller polaroids when more images so they fit inside the card
+      const polaroidSize = count <= 3 ? 260 : 220;
+      const polaroidSizeMobile = count <= 3 ? 200 : 170;
+      const offsetStep = count <= 3 ? 80 : 65;
+
       return (
-        <div className="syslog-img-scattered">
+        <div
+          className="syslog-img-scattered"
+          style={{
+            ["--polaroid-size" as string]: `${polaroidSize}px`,
+            ["--polaroid-size-mobile" as string]: `${polaroidSizeMobile}px`,
+          }}
+        >
           {item.images.map((img, i) => {
             const rotations = [-6, 4, -3, 5];
             const rotate = rotations[i % rotations.length];
-            const offsetX = (i - Math.floor(item.images!.length / 2)) * 60;
+            const center = (count - 1) / 2;
+            const offsetX = (i - center) * offsetStep;
+            // Edge images behind center for a nice fan effect
+            const distFromCenter = Math.abs(i - center);
+            const zIdx = count - Math.round(distFromCenter);
             return (
               <div
                 key={i}
                 style={{
                   transform: `translateX(${offsetX}px) rotate(${rotate}deg)`,
-                  zIndex: i,
+                  zIndex: zIdx,
                 }}
                 className="syslog-polaroid"
               >
