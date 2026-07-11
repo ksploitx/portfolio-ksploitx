@@ -39,6 +39,14 @@ function DiscordIcon({ size = 20 }: { size?: number }) {
   );
 }
 
+function YoutubeIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
 export default function Contact() {
   const [showResume, setShowResume] = useState(false);
   const email = "singhkhushneet601@gmail.com";
@@ -95,56 +103,68 @@ export default function Contact() {
                 </a>
               </motion.div>
 
-              {/* Social Links */}
+              {/* Social Links & YouTube */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="flex items-center justify-center lg:justify-start gap-4"
+                className="flex flex-col gap-4 w-fit mx-auto lg:mx-0"
               >
+                <div className="flex items-center justify-center lg:justify-start gap-4">
+                  <a
+                    href="https://github.com/ksploitx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon-btn"
+                    aria-label="GitHub"
+                  >
+                    <GithubIcon size={20} />
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/khushneet-singh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon-btn"
+                    aria-label="LinkedIn"
+                  >
+                    <LinkedinIcon size={20} />
+                  </a>
+                  <a
+                    href={`mailto:${email}`}
+                    className="social-icon-btn"
+                    aria-label="Email"
+                  >
+                    <Mail size={20} />
+                  </a>
+                  <a
+                    href="https://x.com/Singh0Khushneet"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon-btn"
+                    aria-label="Twitter / X"
+                  >
+                    <TwitterIcon size={20} />
+                  </a>
+                  <a
+                    href="https://discord.com/users/724934961349656606"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon-btn"
+                    aria-label="Discord"
+                  >
+                    <DiscordIcon size={20} />
+                  </a>
+                </div>
+                
                 <a
-                  href="https://github.com/ksploitx"
+                  href="https://www.youtube.com/channel/UCL04KlfI2srLcmY7A8A4NRg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-icon-btn"
-                  aria-label="GitHub"
+                  className="flex items-center justify-center gap-3 w-full py-3 border border-[#ff0000]/40 text-[#ff0000] font-mono text-sm hover:bg-[#ff0000]/10 transition-colors duration-200 tracking-wider"
                 >
-                  <GithubIcon size={20} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/khushneet-singh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon-btn"
-                  aria-label="LinkedIn"
-                >
-                  <LinkedinIcon size={20} />
-                </a>
-                <a
-                  href={`mailto:${email}`}
-                  className="social-icon-btn"
-                  aria-label="Email"
-                >
-                  <Mail size={20} />
-                </a>
-                <a
-                  href="https://x.com/Singh0Khushneet"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon-btn"
-                  aria-label="Twitter / X"
-                >
-                  <TwitterIcon size={20} />
-                </a>
-                <a
-                  href="https://discord.com/users/724934961349656606"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon-btn"
-                  aria-label="Discord"
-                >
-                  <DiscordIcon size={20} />
+                  <YoutubeIcon size={20} />
+                  <span>KsploitX Dev</span>
                 </a>
               </motion.div>
             </div>

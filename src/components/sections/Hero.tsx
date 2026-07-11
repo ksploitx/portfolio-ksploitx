@@ -232,19 +232,30 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.3, duration: 0.6 }}
-              className="flex flex-row gap-4 flex-wrap"
+              className="flex flex-col md:flex-row gap-3 w-full"
             >
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent-cyan text-background font-mono text-sm font-semibold hover:opacity-90 transition-opacity duration-200 tracking-wider"
+                className="flex-1 inline-flex justify-center items-center gap-2 px-2 py-3 bg-gradient-to-r from-accent to-accent-cyan text-background font-mono text-xs lg:text-sm font-semibold hover:opacity-90 transition-opacity duration-200 tracking-wider whitespace-nowrap"
               >
                 VIEW_PROJECTS →
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-accent/40 text-accent font-mono text-sm hover:bg-accent/10 transition-colors duration-200 tracking-wider"
+                className="flex-1 inline-flex justify-center items-center gap-2 px-2 py-3 border border-accent/40 text-accent font-mono text-xs lg:text-sm hover:bg-accent/10 transition-colors duration-200 tracking-wider whitespace-nowrap"
               >
                 INIT_CONTACT
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCL04KlfI2srLcmY7A8A4NRg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex justify-center items-center gap-2 px-2 py-3 border border-[#ff0000]/40 text-[#ff0000] font-mono text-xs lg:text-sm hover:bg-[#ff0000]/10 transition-colors duration-200 tracking-wider whitespace-nowrap"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+                KSPLOITX DEV
               </a>
             </motion.div>
           </div>
