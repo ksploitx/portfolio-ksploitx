@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og';
 export const dynamic = 'force-static';
 
 // Image metadata
-export const size = { width: 32, height: 32 };
+export const size = { width: 96, height: 96 };
 export const contentType = 'image/png';
 
 // Image generation
@@ -20,7 +20,7 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: 'monospace',
-          fontSize: 13,
+          fontSize: 39,
           fontWeight: 700,
           color: '#00ff88',
           letterSpacing: '-0.5px',

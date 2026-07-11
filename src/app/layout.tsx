@@ -28,8 +28,11 @@ export const metadata: Metadata = {
   description:
     "Personal portfolio of Khushneet Singh (KSPLOITX) — Full-stack developer and AI engineer building intelligent systems at the intersection of security, machine learning, and scalable architecture.",
   icons: {
-    icon: `${basePath}/favicon.png`,
-    apple: `${basePath}/apple-icon.png`,
+    icon: [
+      { url: `${basePath}/favicon.ico`, sizes: 'any' },
+      { url: `${basePath}/icon`, sizes: '96x96', type: 'image/png' },
+    ],
+    apple: `${basePath}/apple-icon`,
   },
   openGraph: {
     title: "Khushneet Singh — KSPLOITX",
