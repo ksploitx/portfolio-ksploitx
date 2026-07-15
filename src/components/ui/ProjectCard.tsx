@@ -47,7 +47,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             alt={`${project.title} banner`}
             width={640}
             height={360}
-            className="w-full h-full object-cover"
+            className={`w-full h-full ${
+              project.containImage ? "object-contain object-top p-2" : "object-cover"
+            }`}
           />
         ) : (
           /* Generated dark banner with codename overlay */

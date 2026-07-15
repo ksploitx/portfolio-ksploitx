@@ -9,6 +9,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   coverImage?: string;
+  containImage?: boolean;
   featured: boolean;
   status: "DEPLOYED" | "WIP" | "ARCHIVED" | "DEVELOPED";
 }
