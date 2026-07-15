@@ -91,4 +91,8 @@ export const TECH_ICON_MAP: Record<string, string | null> = {
   AWS: `${DEVICON_BASE}/amazonwebservices/amazonwebservices-original-wordmark.svg`,
   "Hugging Face": null,
   "OpenAI API": null,
+  "Next.js 14": `${DEVICON_BASE}/nextjs/nextjs-original.svg`,
+  "Lucide React": null,
+  "scikit-learn": null,
+  OpenRouter: null,
 };
